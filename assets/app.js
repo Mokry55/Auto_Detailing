@@ -4,13 +4,17 @@ const nav = document.querySelector('.site-nav');
 if (menuToggle && nav) {
   menuToggle.addEventListener('click', () => {
     const isOpen = nav.classList.toggle('is-open');
+    menuToggle.classList.toggle('is-open', isOpen);
     menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.setAttribute('aria-label', isOpen ? 'Zamknij menu' : 'Otwórz menu');
   });
 
   nav.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       nav.classList.remove('is-open');
+      menuToggle.classList.remove('is-open');
       menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Otwórz menu');
     });
   });
 }
