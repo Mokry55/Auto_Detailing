@@ -8,6 +8,14 @@
       name="description"
       content="Premium studio auto detailingu: korekta lakieru, ceramika, PPF i detailing wnętrza. Wyślij 3 zdjęcia i odbierz wycenę do 2 godzin."
     />
+    <link rel="canonical" href="https://twoja-domena.pl/" />
+    <meta property="og:title" content="LIME DETAIL | Premium Auto Detailing" />
+    <meta
+      property="og:description"
+      content="Premium studio auto detailingu: korekta lakieru, ceramika, PPF i detailing wnętrza. Wyślij 3 zdjęcia i odbierz wycenę do 2 godzin."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pl_PL" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,6 +23,24 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "LIME DETAIL Studio",
+        "telephone": "+48 123 123 123",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Przykładowa 27",
+          "addressLocality": "Warszawa",
+          "postalCode": "00-000",
+          "addressCountry": "PL"
+        },
+        "openingHours": ["Mo-Fr 09:00-18:00", "Sa 09:00-14:00"],
+        "url": "https://twoja-domena.pl/",
+        "areaServed": "Warszawa"
+      }
+    </script>
   </head>
   <body>
     <header class="site-header" id="top">
@@ -327,6 +353,8 @@
           <div>
             <p class="eyebrow">Kontakt</p>
             <h2 id="kontakt-title">Wyślij 3 zdjęcia i dostaniesz wycenę.</h2>
+            <p class="contact-hint">Najwygodniej na WhatsApp: 3 zdjęcia + model/rocznik + co chcesz poprawić.</p>
+            <a class="btn whatsapp-btn" href="https://wa.me/48111111111?text=Cze%C5%9B%C4%87%2C%20prosz%C4%99%20o%20wycen%C4%99%20detailingu.%20Wysy%C5%82am%203%20zdj%C4%99cia%2C%20model%2C%20rocznik%20i%20zakres%20prac.">Wyślij na WhatsApp</a>
             <form id="contact-form" novalidate>
               <label>Imię
                 <input type="text" name="name" autocomplete="name" required />
@@ -344,10 +372,14 @@
                   <option>Powłoka ceramiczna</option>
                   <option>PPF</option>
                   <option>Detailing wnętrza</option>
+                  <option>Inne</option>
                 </select>
               </label>
+              <label id="custom-service-wrap" hidden>Jaka usługa?
+                <input type="text" name="customService" id="custom-service" />
+              </label>
               <label>Wiadomość
-                <textarea name="message" rows="4" placeholder="Model auta, rocznik, stan lakieru..." required></textarea>
+                <textarea name="message" rows="4" placeholder="Model, rocznik, stan lakieru + link do zdjęć (np. Google Drive) albo wyślij zdjęcia na WhatsApp." required></textarea>
               </label>
               <label class="check-row">
                 <input type="checkbox" name="consent" required />
@@ -361,6 +393,7 @@
             <h3>LIME DETAIL Studio</h3>
             <p>ul. Przykładowa 27, 00-000 Warszawa</p>
             <p><a href="tel:+48123123123">+48 123 123 123</a><br /><a href="mailto:kontakt@limedetail.pl">kontakt@limedetail.pl</a></p>
+            <p><a class="text-link" href="https://maps.google.com/?q=ul.+Przyk%C5%82adowa+27,+Warszawa" target="_blank" rel="noopener noreferrer">Otwórz dojazd w Google Maps</a></p>
             <h4>Godziny</h4>
             <p>Pon–Pt: 09:00–18:00<br />Sob: 09:00–14:00</p>
             <p class="note">Odpisujemy do 2h w godzinach pracy.</p>
@@ -372,6 +405,11 @@
     <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Podgląd realizacji">
       <button class="lightbox-close" type="button" aria-label="Zamknij podgląd">×</button>
       <img src="" alt="Podgląd realizacji" id="lightbox-image" />
+    </div>
+
+    <div class="mobile-sticky-cta" aria-label="Szybki kontakt">
+      <a class="btn" href="tel:+48123123123">Zadzwoń</a>
+      <a class="btn" href="https://wa.me/48111111111?text=Cze%C5%9B%C4%87%2C%20prosz%C4%99%20o%20wycen%C4%99%20detailingu.%20Wysy%C5%82am%203%20zdj%C4%99cia%2C%20model%2C%20rocznik%20i%20zakres%20prac.">WhatsApp</a>
     </div>
 
     <script src="assets/app.js" defer></script>
