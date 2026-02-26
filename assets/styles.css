@@ -23,6 +23,10 @@ body {
   line-height: 1.55;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -454,6 +458,15 @@ form {
   gap: 0.9rem;
 }
 
+.contact-hint {
+  color: var(--muted);
+  margin-top: 0.65rem;
+}
+
+.whatsapp-btn {
+  margin-top: 0.9rem;
+}
+
 label {
   display: grid;
   gap: 0.4rem;
@@ -518,6 +531,10 @@ select:focus {
   color: var(--text);
 }
 
+.mobile-sticky-cta {
+  display: none;
+}
+
 .lightbox {
   position: fixed;
   inset: 0;
@@ -548,6 +565,31 @@ select:focus {
   height: 38px;
   border-radius: 8px;
   font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 5.5rem;
+  }
+
+  .mobile-sticky-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+    padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
+    background: #11151b;
+    border-top: 1px solid var(--border);
+  }
+
+  .mobile-sticky-cta .btn {
+    text-align: center;
+    padding: 0.68rem 0.8rem;
+  }
 }
 
 @media (min-width: 860px) {

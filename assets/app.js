@@ -52,6 +52,7 @@ galleryItems.forEach((item) => {
     lightboxImage.src = item.dataset.full;
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('no-scroll');
   });
 });
 
@@ -59,6 +60,7 @@ function closeLightbox() {
   lightbox.classList.remove('is-open');
   lightbox.setAttribute('aria-hidden', 'true');
   lightboxImage.src = '';
+  document.body.classList.remove('no-scroll');
 }
 
 lightboxClose.addEventListener('click', closeLightbox);
@@ -74,6 +76,8 @@ document.addEventListener('keydown', (event) => {
 
 const packageButtons = document.querySelectorAll('.line-btn');
 const packageSelect = document.getElementById('package-select');
+const customServiceWrap = document.getElementById('custom-service-wrap');
+const customService = document.getElementById('custom-service');
 
 packageButtons.forEach((button) => {
   button.addEventListener('click', () => {
@@ -82,6 +86,19 @@ packageButtons.forEach((button) => {
   });
 });
 
+
+function toggleCustomServiceField() {
+  if (!packageSelect || !customServiceWrap || !customService) return;
+  const isOther = packageSelect.value === 'Inne';
+  customServiceWrap.hidden = !isOther;
+  customService.required = isOther;
+  if (!isOther) customService.value = '';
+}
+
+if (packageSelect) {
+  packageSelect.addEventListener('change', toggleCustomServiceField);
+  toggleCustomServiceField();
+}
 const form = document.getElementById('contact-form');
 const formStatus = document.querySelector('.form-status');
 
@@ -98,7 +115,15 @@ form.addEventListener('submit', (event) => {
     return;
   }
 
+  if (customService && customService.required && !customService.value.trim()) {
+    formStatus.textContent = 'Uzupełnij pole „Jaka usługa?”.';
+    formStatus.className = 'form-status error';
+    customService.focus();
+    return;
+  }
+
   formStatus.textContent = 'Dziękujemy. Oddzwonimy lub odpiszemy jeszcze dziś.';
   formStatus.className = 'form-status ok';
   form.reset();
+  toggleCustomServiceField();
 });
