@@ -19,35 +19,29 @@ if (menuToggle && nav) {
   });
 }
 
-document.querySelectorAll('.service-row').forEach((button) => {
-  button.addEventListener('click', () => {
-    const item = button.closest('.service-item');
-    const expanded = item.classList.toggle('is-open');
-    button.setAttribute('aria-expanded', String(expanded));
-  });
-});
-
 const chips = document.querySelectorAll('.chip');
 const galleryItems = document.querySelectorAll('.gallery-item');
 
-chips.forEach((chip) => {
-  chip.addEventListener('click', () => {
-    const filter = chip.dataset.filter;
-    chips.forEach((c) => c.classList.remove('is-active'));
-    chip.classList.add('is-active');
+if (chips.length && galleryItems.length) {
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.filter;
+      chips.forEach((c) => c.classList.remove('is-active'));
+      chip.classList.add('is-active');
 
-    galleryItems.forEach((item) => {
-      const show = filter === 'all' || item.dataset.category === filter;
-      item.hidden = !show;
+      galleryItems.forEach((item) => {
+        const show = filter === 'all' || item.dataset.category === filter;
+        item.hidden = !show;
+      });
     });
   });
-});
+}
 
 const lightbox = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightbox-image');
 const lightboxClose = document.querySelector('.lightbox-close');
 
-if (lightbox && lightboxImage && lightboxClose) {
+if (lightbox && lightboxImage && lightboxClose && galleryItems.length) {
   galleryItems.forEach((item) => {
     item.addEventListener('click', () => {
       lightboxImage.src = item.dataset.full;
@@ -141,18 +135,13 @@ document.querySelectorAll('[data-ba]').forEach((block) => {
 
   if (!(range instanceof HTMLInputElement) || !beforeLayer || !divider) return;
 
-  const syncWidth = () => {
-    block.style.setProperty('--ba-width', `${block.clientWidth}px`);
-  };
-
   const setSplit = (value) => {
     const split = `${value}%`;
     beforeLayer.style.width = split;
     divider.style.left = split;
   };
 
-  syncWidth();
   setSplit(range.value);
   range.addEventListener('input', () => setSplit(range.value));
-  window.addEventListener('resize', syncWidth);
+  range.addEventListener('change', () => setSplit(range.value));
 });
