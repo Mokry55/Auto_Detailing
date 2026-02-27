@@ -530,6 +530,10 @@ p {
   gap: 2rem;
 }
 
+.contact {
+  padding-bottom: 3.2rem;
+}
+
 form {
   margin-top: 1.4rem;
   display: grid;
@@ -600,7 +604,7 @@ select:focus {
   border-radius: 12px;
   padding: 1.2rem;
   background: var(--section);
-  text-align: center;
+  text-align: left;
 }
 
 .contact-meta h3,
@@ -610,7 +614,7 @@ select:focus {
 
 .contact-meta p {
   color: var(--muted);
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.8rem;
 }
 
 .contact-meta p:last-child {
@@ -621,9 +625,13 @@ select:focus {
   font-weight: 700;
 }
 
+.contact-meta a[href^='mailto:'] {
+  font-weight: 700;
+}
+
 .contact-meta .line-btn {
   display: inline-flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 0.2rem;
 }
 
@@ -723,7 +731,15 @@ select:focus {
     justify-content: center;
     text-align: center;
     padding: 0.68rem 0.8rem;
-    animation: stickyCallPulse 2.4s ease-in-out infinite;
+    animation: stickyCallPulse 1.4s ease-in-out infinite;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-meta {
+    margin-top: 1.4rem;
   }
 }
 
@@ -761,19 +777,9 @@ select:focus {
   }
 
   .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-grid > div {
-    max-width: 760px;
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .contact-meta {
-    max-width: 760px;
-    width: 100%;
-    margin: 1.4rem auto 0;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: start;
+    gap: 2.2rem;
   }
 }
 
@@ -1137,11 +1143,13 @@ select:focus {
   0%,
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 transparent;
+    box-shadow: 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
+    filter: brightness(1);
   }
   50% {
-    transform: scale(1.03);
-    box-shadow: 0 0 0.95rem color-mix(in srgb, var(--accent) 38%, transparent);
+    transform: scale(1.01);
+    box-shadow: 0 0 1.1rem color-mix(in srgb, var(--accent) 40%, transparent);
+    filter: brightness(1.08);
   }
 }
 
