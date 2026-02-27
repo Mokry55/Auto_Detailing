@@ -784,6 +784,7 @@ select:focus {
 }
 
 .ba {
+  --pos: 50;
   position: relative;
   border-radius: 10px;
   overflow: hidden;
@@ -798,24 +799,20 @@ select:focus {
   object-fit: cover;
 }
 
-.ba-before {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 50%;
-  overflow: hidden;
-}
-
 .ba-image--before {
   filter: grayscale(0.75) brightness(0.72);
+  clip-path: inset(0 calc(100% - (var(--pos) * 1%)) 0 0);
 }
 
 .ba-divider {
   position: absolute;
   top: 0;
   bottom: 0;
+  left: calc(var(--pos) * 1%);
   width: 2px;
   background: var(--accent);
   box-shadow: 0 0 0 2px rgba(11, 13, 16, 0.7);
+  transform: translateX(-50%);
 }
 
 .ba-label {

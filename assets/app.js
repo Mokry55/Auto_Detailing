@@ -130,18 +130,16 @@ if (form && formStatus) {
 document.querySelectorAll('[data-ba]').forEach((block) => {
   const card = block.closest('.ba-card');
   const range = card?.querySelector('[data-ba-range]');
-  const beforeLayer = block.querySelector('.ba-before');
-  const divider = block.querySelector('.ba-divider');
 
-  if (!(range instanceof HTMLInputElement) || !beforeLayer || !divider) return;
+  if (!(range instanceof HTMLInputElement)) return;
 
   const setSplit = (value) => {
-    const split = `${value}%`;
-    beforeLayer.style.width = split;
-    divider.style.left = split;
+    const parsed = Number.parseFloat(value);
+    const safe = Number.isFinite(parsed) ? Math.min(99.9, Math.max(0.1, parsed)) : 50;
+    block.style.setProperty('--pos', String(safe));
   };
 
-  setSplit(range.value);
+  setSplit(range.value || '50');
   range.addEventListener('input', () => setSplit(range.value));
   range.addEventListener('change', () => setSplit(range.value));
 });
