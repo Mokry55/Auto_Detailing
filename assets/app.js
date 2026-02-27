@@ -139,7 +139,7 @@ document.querySelectorAll('[data-ba]').forEach((block) => {
     block.style.setProperty('--pos', String(safe));
   };
 
-  setSplit(range.value || '50');
+  setSplit(range.value || '35');
   range.addEventListener('input', () => setSplit(range.value));
   range.addEventListener('change', () => setSplit(range.value));
 });
