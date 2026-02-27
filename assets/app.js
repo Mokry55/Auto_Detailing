@@ -211,4 +211,24 @@ function initScrollReveal() {
   });
 }
 
+function initMobileStickyCtaPulse() {
+  const stickyCta = document.querySelector('.mobile-sticky-cta');
+
+  if (!(stickyCta instanceof HTMLElement)) return;
+
+  const mobileMedia = window.matchMedia('(max-width: 768px)');
+  const reducedMotionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const updatePulseState = () => {
+    const shouldPulse = mobileMedia.matches && !reducedMotionMedia.matches;
+    stickyCta.classList.toggle('is-pulsing', shouldPulse);
+  };
+
+  updatePulseState();
+
+  mobileMedia.addEventListener('change', updatePulseState);
+  reducedMotionMedia.addEventListener('change', updatePulseState);
+}
+
+initMobileStickyCtaPulse();
 initScrollReveal();

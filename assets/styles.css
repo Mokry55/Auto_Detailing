@@ -722,6 +722,23 @@ select:focus {
     padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
     background: #11151b;
     border-top: 1px solid var(--border);
+    overflow: visible;
+  }
+
+  .mobile-sticky-cta::before {
+    content: '';
+    position: absolute;
+    inset: -10px -10px 0 -10px;
+    background: radial-gradient(circle at 50% 100%, rgba(182, 255, 46, 0.22), transparent 60%);
+    opacity: 0.35;
+    filter: blur(10px);
+    pointer-events: none;
+    transition: opacity 200ms ease;
+    z-index: -1;
+  }
+
+  .mobile-sticky-cta.is-pulsing::before {
+    animation: ctaHalo 1.4s ease-in-out infinite;
   }
 
   .mobile-sticky-cta .btn {
@@ -1154,19 +1171,32 @@ select:focus {
 @keyframes stickyCallPulse {
   0%,
   100% {
-    transform: scale(1);
     box-shadow: 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
     filter: brightness(1);
   }
   50% {
-    transform: scale(1.01);
-    box-shadow: 0 0 1.1rem color-mix(in srgb, var(--accent) 40%, transparent);
-    filter: brightness(1.08);
+    box-shadow: 0 0 0.75rem color-mix(in srgb, var(--accent) 34%, transparent);
+    filter: brightness(1.04);
+  }
+}
+
+@keyframes ctaHalo {
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.42;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .mobile-sticky-cta .btn {
     animation: none;
+  }
+
+  .mobile-sticky-cta::before {
+    animation: none;
+    opacity: 0.2;
   }
 }
