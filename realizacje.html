@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Realizacje | LIME DETAIL</title>
+    <meta name="description" content="Galeria realizacji LIME DETAIL: korekta lakieru, ceramika, PPF i detailing wnętrza." />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container nav-wrap">
+        <a class="logo" href="/index.html#top">LIME DETAIL</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Otwórz menu">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Nawigacja główna">
+          <a href="/index.html#uslugi">Usługi</a>
+          <a href="/index.html#realizacje">Case study</a>
+          <a href="/index.html#kontakt">Kontakt</a>
+          <a href="/quiz.html">Quiz</a>
+        </nav>
+        <a class="btn btn-small" href="/index.html#kontakt">Umów wycenę</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section gallery" id="realizacje" aria-labelledby="realizacje-title">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Realizacje</p>
+            <h1 id="realizacje-title">Pełna galeria realizacji</h1>
+          </div>
+          <div class="filter-chips" role="group" aria-label="Filtry realizacji">
+            <button class="chip is-active" data-filter="all" type="button">Wszystkie</button>
+            <button class="chip" data-filter="korekta" type="button">Korekta</button>
+            <button class="chip" data-filter="ceramika" type="button">Ceramika</button>
+            <button class="chip" data-filter="ppf" type="button">PPF</button>
+            <button class="chip" data-filter="wnetrze" type="button">Wnętrze</button>
+          </div>
+          <div class="gallery-track" aria-label="Galeria realizacji">
+            <button class="gallery-item" data-category="korekta" data-full="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1600&q=80" type="button">
+              <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=70" alt="Auto po korekcie lakieru" loading="lazy" />
+            </button>
+            <button class="gallery-item" data-category="ceramika" data-full="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1600&q=80" type="button">
+              <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=900&q=70" alt="Aplikacja powłoki ceramicznej" loading="lazy" />
+            </button>
+            <button class="gallery-item" data-category="ppf" data-full="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80" type="button">
+              <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=70" alt="Auto zabezpieczone folią PPF" loading="lazy" />
+            </button>
+            <button class="gallery-item" data-category="wnetrze" data-full="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1600&q=80" type="button">
+              <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=70" alt="Wnętrze samochodu po detailingu" loading="lazy" />
+            </button>
+            <button class="gallery-item" data-category="korekta" data-full="https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1600&q=80" type="button">
+              <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=900&q=70" alt="Lakier po wieloetapowej korekcie" loading="lazy" />
+            </button>
+            <button class="gallery-item" data-category="ceramika" data-full="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1600&q=80" type="button">
+              <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=900&q=70" alt="Refleks lakieru po ceramice" loading="lazy" />
+            </button>
+            <button class="gallery-item" data-category="ppf" data-full="https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?auto=format&fit=crop&w=1600&q=80" type="button">
+              <img src="https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?auto=format&fit=crop&w=900&q=70" alt="Montaż PPF na zderzaku" loading="lazy" />
+            </button>
+            <button class="gallery-item" data-category="wnetrze" data-full="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1600&q=80" type="button">
+              <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=900&q=70" alt="Czyste wnętrze premium SUV" loading="lazy" />
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© LIME DETAIL Studio — wszystkie prawa zastrzeżone.</p>
+      </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Podgląd realizacji">
+      <button class="lightbox-close" type="button" aria-label="Zamknij podgląd">×</button>
+      <img src="" alt="Podgląd realizacji" id="lightbox-image" />
+    </div>
+
+    <script src="assets/app.js" defer></script>
+  </body>
+</html>

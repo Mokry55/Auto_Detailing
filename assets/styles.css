@@ -280,13 +280,11 @@ p {
 }
 
 .service-row {
-  all: unset;
-  cursor: pointer;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.8rem;
-  padding: 1.2rem 0;
+  padding: 1.1rem 0;
 }
 
 .service-main strong {
@@ -295,26 +293,47 @@ p {
   font-size: 1.1rem;
 }
 
-.service-main span,
-.service-meta,
-.service-details {
+.service-main span {
   color: var(--muted);
 }
 
-.service-meta {
-  font-weight: 600;
+.services-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-.service-details {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.25s ease;
-  padding-right: 1rem;
+.service-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  backdrop-filter: blur(2px);
+  display: grid;
+  gap: 0.7rem;
 }
 
-.service-item.is-open .service-details {
-  max-height: 120px;
-  padding-bottom: 1.1rem;
+.service-card h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.service-card p,
+.service-card ul {
+  color: var(--muted);
+}
+
+.service-card ul {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.service-card .text-link {
+  justify-self: start;
+  margin-top: 0.4rem;
+  text-decoration-color: color-mix(in srgb, var(--accent) 30%, var(--border));
 }
 
 .compare-table-wrap {
@@ -658,11 +677,6 @@ select:focus {
     grid-template-columns: 1.02fr 0.98fr;
   }
 
-  .service-row {
-    grid-template-columns: 1fr auto;
-    align-items: center;
-  }
-
   .pricing-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -756,10 +770,10 @@ select:focus {
   object-fit: cover;
 }
 
-.ba-grid {
+.realizations-case {
   margin-top: 1.5rem;
   display: grid;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .ba-card {
@@ -792,8 +806,6 @@ select:focus {
 }
 
 .ba-image--before {
-  width: var(--ba-width, 100%);
-  max-width: none;
   filter: grayscale(0.75) brightness(0.72);
 }
 
@@ -842,6 +854,101 @@ select:focus {
   gap: 0.5rem;
 }
 
+
+.realizations-copy {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem;
+  background: var(--section);
+  display: grid;
+  gap: 0.8rem;
+  align-content: start;
+}
+
+.realizations-copy h3 {
+  margin: 0;
+}
+
+.realizations-copy p,
+.realizations-copy ul {
+  color: var(--muted);
+}
+
+.realizations-copy ul {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.realizations-more {
+  margin-top: 1.2rem;
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+}
+
+.quiz-teaser-grid {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.quiz-benefits {
+  margin: 1rem 0 1.2rem;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.quiz-benefits li {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.quiz-preview {
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+  border-radius: 12px;
+  padding: 1rem;
+  background: linear-gradient(160deg, rgba(182, 255, 46, 0.08), rgba(17, 21, 27, 0.9));
+  box-shadow: 0 0 1.2rem color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.quiz-preview h3 {
+  margin: 0.3rem 0 0.9rem;
+}
+
+.quiz-preview__badge {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.quiz-preview__line {
+  height: 0.55rem;
+  background: rgba(168, 176, 188, 0.35);
+  border-radius: 999px;
+  margin-bottom: 0.55rem;
+}
+
+.quiz-preview__line.short {
+  width: 70%;
+}
+
+.quiz-preview__highlight {
+  margin-top: 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border));
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  font-weight: 600;
+}
+
 .site-footer {
   border-top: 1px solid var(--border);
   padding: 1.2rem 0;
@@ -864,6 +971,16 @@ select:focus {
 @media (min-width: 860px) {
   .offer-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .realizations-case {
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+  }
+
+  .quiz-teaser-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
   }
 }
 
