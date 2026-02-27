@@ -781,6 +781,18 @@ select:focus {
     align-items: start;
     gap: 2.2rem;
   }
+
+  .contact,
+  .contact .container,
+  .contact-grid {
+    overflow: visible;
+  }
+
+  .contact-meta {
+    position: sticky;
+    top: 96px;
+    align-self: start;
+  }
 }
 
 .process-grid {
