@@ -143,3 +143,72 @@ document.querySelectorAll('[data-ba]').forEach((block) => {
   range.addEventListener('input', () => setSplit(range.value));
   range.addEventListener('change', () => setSplit(range.value));
 });
+
+function initScrollReveal() {
+  const revealSelectors = [
+    '.section',
+    '.trust-card',
+    '.service-card',
+    '.pricing-card',
+    '.realizations-case',
+    '.contact-grid',
+    '.offer-grid',
+    '.process-grid',
+    '.quiz-teaser-card',
+    '.config-teaser-card'
+  ];
+
+  const staggerSelectors = ['.trust-card', '.service-card', '.pricing-card'];
+  const revealTargets = [...new Set(revealSelectors.flatMap((selector) => [...document.querySelectorAll(selector)]))];
+
+  if (!revealTargets.length) return;
+
+  revealTargets.forEach((element) => element.classList.add('reveal'));
+
+  staggerSelectors.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((card, index) => {
+      const delay = Math.min(index * 60, 240);
+      card.style.setProperty('--reveal-delay', `${delay}ms`);
+    });
+  });
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    revealTargets.forEach((element) => element.classList.add('is-visible'));
+    return;
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    revealTargets.forEach((element) => element.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: '0px 0px -10% 0px'
+    }
+  );
+
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+  revealTargets.forEach((element) => {
+    const rect = element.getBoundingClientRect();
+    const isInInitialViewport = rect.top < viewportHeight && rect.bottom > 0;
+
+    if (isInInitialViewport) {
+      element.classList.add('is-visible');
+      return;
+    }
+
+    observer.observe(element);
+  });
+}
+
+initScrollReveal();
