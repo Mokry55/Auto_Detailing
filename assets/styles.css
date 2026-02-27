@@ -927,6 +927,9 @@ select:focus {
 
 .ba-image--before {
   filter: grayscale(0.75) brightness(0.72);
+}
+
+.ba-image--after {
   clip-path: inset(0 calc(100% - (var(--pos) * 1%)) 0 0);
 }
 
