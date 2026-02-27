@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz detailingu | LIME DETAIL</title>
+    <meta name="description" content="Quiz: dobierz usługę detailingu w 30 sekund i odbierz rekomendację pakietu." />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container nav-wrap">
+        <a class="logo" href="/index.html#top">LIME DETAIL</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Otwórz menu">
+          <span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Nawigacja główna">
+          <a href="/index.html#uslugi">Usługi</a><a href="/index.html#realizacje">Realizacje</a><a href="/index.html#kontakt">Kontakt</a>
+        </nav>
+        <a class="btn btn-small" href="/index.html#kontakt">Kontaktuj się</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" aria-labelledby="quiz-title">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Quiz</p>
+            <h1 id="quiz-title">Dobierz usługę w 30s</h1>
+          </div>
+          <form id="quiz-form" class="quiz-form" novalidate>
+            <fieldset><legend>1. Jak wygląda lakier?</legend>
+              <label><input type="radio" name="paint" value="heavy" required /> Dużo rys i hologramów</label>
+              <label><input type="radio" name="paint" value="light" required /> Delikatne ślady i zmatowienie</label>
+              <label><input type="radio" name="paint" value="new" required /> Auto prawie nowe</label>
+            </fieldset>
+            <fieldset><legend>2. Co jest priorytetem?</legend>
+              <label><input type="radio" name="priority" value="protection" required /> Długotrwała ochrona</label>
+              <label><input type="radio" name="priority" value="sale" required /> Przygotowanie do sprzedaży</label>
+              <label><input type="radio" name="priority" value="interior" required /> Czyste wnętrze</label>
+            </fieldset>
+            <fieldset><legend>3. Jak używasz auta?</legend>
+              <label><input type="radio" name="usage" value="city" required /> Miasto / codziennie</label>
+              <label><input type="radio" name="usage" value="highway" required /> Częste trasy</label>
+              <label><input type="radio" name="usage" value="weekend" required /> Okazjonalnie</label>
+            </fieldset>
+            <fieldset><legend>4. Termin realizacji?</legend>
+              <label><input type="radio" name="time" value="fast" required /> Jak najszybciej</label>
+              <label><input type="radio" name="time" value="flex" required /> Elastycznie</label>
+            </fieldset>
+            <fieldset><legend>5. Budżet orientacyjny?</legend>
+              <label><input type="radio" name="budget" value="low" required /> do 1500 zł</label>
+              <label><input type="radio" name="budget" value="mid" required /> 1500–3500 zł</label>
+              <label><input type="radio" name="budget" value="high" required /> powyżej 3500 zł</label>
+            </fieldset>
+            <button class="btn" type="submit">Pokaż rekomendację</button>
+            <p id="quiz-status" class="form-status" role="status" aria-live="polite"></p>
+          </form>
+          <article id="quiz-result" class="quiz-result" hidden></article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container"><p>© LIME DETAIL Studio — wszystkie prawa zastrzeżone.</p></div></footer>
+    <script src="assets/app.js" defer></script>
+    <script src="assets/quiz.js" defer></script>
+  </body>
+</html>
