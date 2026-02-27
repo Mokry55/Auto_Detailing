@@ -47,32 +47,34 @@ const lightbox = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightbox-image');
 const lightboxClose = document.querySelector('.lightbox-close');
 
-galleryItems.forEach((item) => {
-  item.addEventListener('click', () => {
-    lightboxImage.src = item.dataset.full;
-    lightbox.classList.add('is-open');
-    lightbox.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('no-scroll');
+if (lightbox && lightboxImage && lightboxClose) {
+  galleryItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      lightboxImage.src = item.dataset.full;
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('no-scroll');
+    });
   });
-});
 
-function closeLightbox() {
-  lightbox.classList.remove('is-open');
-  lightbox.setAttribute('aria-hidden', 'true');
-  lightboxImage.src = '';
-  document.body.classList.remove('no-scroll');
-}
-
-lightboxClose.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', (event) => {
-  if (event.target === lightbox) closeLightbox();
-});
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
-    closeLightbox();
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImage.src = '';
+    document.body.classList.remove('no-scroll');
   }
-});
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+      closeLightbox();
+    }
+  });
+}
 
 const packageButtons = document.querySelectorAll('.line-btn');
 const packageSelect = document.getElementById('package-select');
@@ -81,11 +83,11 @@ const customService = document.getElementById('custom-service');
 
 packageButtons.forEach((button) => {
   button.addEventListener('click', () => {
+    if (!packageSelect) return;
     packageSelect.value = button.dataset.package;
-    document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' });
   });
 });
-
 
 function toggleCustomServiceField() {
   if (!packageSelect || !customServiceWrap || !customService) return;
@@ -99,31 +101,51 @@ if (packageSelect) {
   packageSelect.addEventListener('change', toggleCustomServiceField);
   toggleCustomServiceField();
 }
+
 const form = document.getElementById('contact-form');
 const formStatus = document.querySelector('.form-status');
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
+if (form && formStatus) {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-  const fields = [...form.querySelectorAll('input[required], textarea[required], select[required]')];
-  const firstInvalid = fields.find((field) => !field.checkValidity());
+    const fields = [...form.querySelectorAll('input[required], textarea[required], select[required]')];
+    const firstInvalid = fields.find((field) => !field.checkValidity());
 
-  if (firstInvalid) {
-    formStatus.textContent = 'Sprawdź pola formularza i spróbuj ponownie.';
-    formStatus.className = 'form-status error';
-    firstInvalid.focus();
-    return;
-  }
+    if (firstInvalid) {
+      formStatus.textContent = 'Sprawdź pola formularza i spróbuj ponownie.';
+      formStatus.className = 'form-status error';
+      firstInvalid.focus();
+      return;
+    }
 
-  if (customService && customService.required && !customService.value.trim()) {
-    formStatus.textContent = 'Uzupełnij pole „Jaka usługa?”.';
-    formStatus.className = 'form-status error';
-    customService.focus();
-    return;
-  }
+    if (customService && customService.required && !customService.value.trim()) {
+      formStatus.textContent = 'Uzupełnij pole „Jaka usługa?”.';
+      formStatus.className = 'form-status error';
+      customService.focus();
+      return;
+    }
 
-  formStatus.textContent = 'Dziękujemy. Oddzwonimy lub odpiszemy jeszcze dziś.';
-  formStatus.className = 'form-status ok';
-  form.reset();
-  toggleCustomServiceField();
+    formStatus.textContent = 'Dziękujemy. Oddzwonimy lub odpiszemy jeszcze dziś.';
+    formStatus.className = 'form-status ok';
+    form.reset();
+    toggleCustomServiceField();
+  });
+}
+
+document.querySelectorAll('[data-ba]').forEach((block) => {
+  const range = block.parentElement?.querySelector('[data-ba-range]');
+  const beforeLayer = block.querySelector('.ba-before');
+  const divider = block.querySelector('.ba-divider');
+
+  if (!(range instanceof HTMLInputElement) || !beforeLayer || !divider) return;
+
+  const setSplit = (value) => {
+    const split = `${value}%`;
+    beforeLayer.style.width = split;
+    divider.style.left = split;
+  };
+
+  setSplit(range.value);
+  range.addEventListener('input', () => setSplit(range.value));
 });
