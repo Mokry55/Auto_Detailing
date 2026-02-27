@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz detailingu | LIME DETAIL</title>
-    <meta name="description" content="Quiz: dobierz usługę detailingu w 30 sekund i odbierz rekomendację pakietu." />
+    <title>Konfigurator detailingu | LIME DETAIL</title>
+    <meta name="description" content="Konfigurator: dobierz usługę detailingu w 30 sekund i odbierz rekomendację pakietu." />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
@@ -22,13 +22,13 @@
     </header>
 
     <main>
-      <section class="section" aria-labelledby="quiz-title">
+      <section class="section" aria-labelledby="config-title">
         <div class="container">
           <div class="section-head">
-            <p class="eyebrow">Quiz</p>
-            <h1 id="quiz-title">Dobierz usługę w 30s</h1>
+            <p class="eyebrow">Konfigurator</p>
+            <h1 id="config-title">Dobierz pakiet w 30s</h1>
           </div>
-          <form id="quiz-form" class="quiz-form" novalidate>
+          <form id="config-form" class="config-form" novalidate>
             <fieldset><legend>1. Jak wygląda lakier?</legend>
               <label><input type="radio" name="paint" value="heavy" required /> Dużo rys i hologramów</label>
               <label><input type="radio" name="paint" value="light" required /> Delikatne ślady i zmatowienie</label>
@@ -54,15 +54,15 @@
               <label><input type="radio" name="budget" value="high" required /> powyżej 3500 zł</label>
             </fieldset>
             <button class="btn" type="submit">Pokaż rekomendację</button>
-            <p id="quiz-status" class="form-status" role="status" aria-live="polite"></p>
+            <p id="config-status" class="form-status" role="status" aria-live="polite"></p>
           </form>
-          <article id="quiz-result" class="quiz-result" hidden></article>
+          <article id="config-result" class="config-result" hidden></article>
         </div>
       </section>
     </main>
 
     <footer class="site-footer"><div class="container"><p>© LIME DETAIL Studio — wszystkie prawa zastrzeżone.</p></div></footer>
     <script src="assets/app.js" defer></script>
-    <script src="assets/quiz.js" defer></script>
+    <script src="assets/configurator.js" defer></script>
   </body>
 </html>

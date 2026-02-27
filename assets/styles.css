@@ -217,6 +217,17 @@ p {
   gap: 1rem;
   align-items: center;
   margin-top: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.hero-phone {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.48rem 0.85rem;
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .hero-media {
@@ -591,6 +602,10 @@ select:focus {
   display: none;
 }
 
+.contact-mobile-tiles {
+  display: none;
+}
+
 .lightbox {
   position: fixed;
   inset: 0;
@@ -626,6 +641,36 @@ select:focus {
 @media (max-width: 768px) {
   body {
     padding-bottom: 5.5rem;
+  }
+
+  .contact-mobile-tiles {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .contact-mobile-tile {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.55rem 0.45rem;
+    display: grid;
+    place-items: center;
+    gap: 0.3rem;
+    color: var(--muted);
+    text-align: center;
+    font-size: 0.76rem;
+    background: rgba(255, 255, 255, 0.01);
+  }
+
+  .contact-mobile-tile svg {
+    width: 1rem;
+    height: 1rem;
+    fill: var(--accent);
+  }
+
+  .mobile-sticky-cta__whatsapp {
+    animation: whatsappPulse 2.2s ease-in-out infinite;
   }
 
   .mobile-sticky-cta {
@@ -839,7 +884,7 @@ select:focus {
   accent-color: var(--accent);
 }
 
-.quiz-teaser-card {
+.config-teaser-card {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1.4rem;
@@ -851,6 +896,10 @@ select:focus {
   gap: 0.5rem;
 }
 
+.pricing-card .btn,
+.realizations-copy .btn {
+  justify-self: center;
+}
 
 .realizations-copy {
   border: 1px solid var(--border);
@@ -886,12 +935,12 @@ select:focus {
   padding: 0.75rem 1rem;
 }
 
-.quiz-teaser-grid {
+.config-teaser-grid {
   display: grid;
   gap: 1.2rem;
 }
 
-.quiz-benefits {
+.config-benefits {
   margin: 1rem 0 1.2rem;
   padding: 0;
   list-style: none;
@@ -900,7 +949,7 @@ select:focus {
   gap: 0.5rem;
 }
 
-.quiz-benefits li {
+.config-benefits li {
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 0.3rem 0.65rem;
@@ -908,7 +957,7 @@ select:focus {
   font-size: 0.88rem;
 }
 
-.quiz-preview {
+.config-preview {
   border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
   border-radius: 12px;
   padding: 1rem;
@@ -916,34 +965,23 @@ select:focus {
   box-shadow: 0 0 1.2rem color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
-.quiz-preview h3 {
-  margin: 0.3rem 0 0.9rem;
+.config-preview h3 {
+  margin: 0.3rem 0 0.7rem;
 }
 
-.quiz-preview__badge {
+.config-preview__badge {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--accent);
 }
 
-.quiz-preview__line {
-  height: 0.55rem;
-  background: rgba(168, 176, 188, 0.35);
-  border-radius: 999px;
-  margin-bottom: 0.55rem;
-}
-
-.quiz-preview__line.short {
-  width: 70%;
-}
-
-.quiz-preview__highlight {
-  margin-top: 0.8rem;
-  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border));
-  border-radius: 10px;
-  padding: 0.7rem 0.8rem;
-  font-weight: 600;
+.config-preview__meta {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.35rem;
+  color: var(--muted);
 }
 
 .site-footer {
@@ -975,7 +1013,7 @@ select:focus {
     align-items: center;
   }
 
-  .quiz-teaser-grid {
+  .config-teaser-grid {
     grid-template-columns: 1.1fr 0.9fr;
     align-items: center;
   }
@@ -989,14 +1027,14 @@ select:focus {
   }
 }
 
-.quiz-form {
+.config-form {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1rem;
   background: var(--section);
 }
 
-.quiz-form fieldset {
+.config-form fieldset {
   border: 1px solid var(--border);
   border-radius: 10px;
   margin: 0 0 0.8rem;
@@ -1005,19 +1043,37 @@ select:focus {
   gap: 0.4rem;
 }
 
-.quiz-form legend {
+.config-form legend {
   padding: 0 0.3rem;
   font-family: "Space Grotesk", sans-serif;
 }
 
-.quiz-result {
+.config-result {
   margin-top: 1rem;
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1rem;
 }
 
-.quiz-result p {
+.config-result p {
   color: var(--muted);
   margin-bottom: 0.8rem;
+}
+
+@keyframes whatsappPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 transparent;
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 0.95rem color-mix(in srgb, var(--accent) 38%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-sticky-cta__whatsapp {
+    animation: none;
+  }
 }
