@@ -170,13 +170,16 @@ p {
 }
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--accent);
   background: var(--accent);
   color: #0b0d10;
   padding: 0.75rem 1.1rem;
   font-weight: 700;
   border-radius: 8px;
+  text-align: center;
 }
 
 .btn:focus-visible,
@@ -247,12 +250,7 @@ p {
 }
 
 .hero-media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 2px solid var(--accent);
-  transform: translate(0.8rem, 0.8rem);
-  pointer-events: none;
+  content: none;
 }
 
 .hero-media img {
@@ -560,10 +558,15 @@ select:focus {
 }
 
 .check-row {
-  grid-template-columns: 18px 1fr;
+  grid-template-columns: 24px minmax(0, 1fr);
   align-items: start;
+  gap: 0.55rem;
   font-weight: 500;
   color: var(--muted);
+}
+
+.check-row input[type="checkbox"] {
+  margin-top: 0.2rem;
 }
 
 .form-status {
@@ -669,10 +672,6 @@ select:focus {
     fill: var(--accent);
   }
 
-  .mobile-sticky-cta__whatsapp {
-    animation: whatsappPulse 2.2s ease-in-out infinite;
-  }
-
   .mobile-sticky-cta {
     position: fixed;
     left: 0;
@@ -680,7 +679,7 @@ select:focus {
     bottom: 0;
     z-index: 30;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 0.7rem;
     padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
     background: #11151b;
@@ -688,8 +687,13 @@ select:focus {
   }
 
   .mobile-sticky-cta .btn {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     padding: 0.68rem 0.8rem;
+    animation: stickyCallPulse 2.4s ease-in-out infinite;
   }
 }
 
@@ -897,8 +901,10 @@ select:focus {
 }
 
 .pricing-card .btn,
-.realizations-copy .btn {
-  justify-self: center;
+.realizations-copy .btn,
+.config-teaser-card .btn {
+  width: 100%;
+  justify-self: stretch;
 }
 
 .realizations-copy {
@@ -1014,8 +1020,22 @@ select:focus {
   }
 
   .config-teaser-grid {
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
     align-items: center;
+  }
+
+  .config-teaser-card {
+    align-items: start;
+  }
+
+  .config-preview {
+    width: 100%;
+    max-width: 420px;
+    justify-self: end;
+  }
+
+  .contact-mobile-tiles {
+    display: none;
   }
 }
 
@@ -1060,7 +1080,7 @@ select:focus {
   margin-bottom: 0.8rem;
 }
 
-@keyframes whatsappPulse {
+@keyframes stickyCallPulse {
   0%,
   100% {
     transform: scale(1);
@@ -1073,7 +1093,7 @@ select:focus {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mobile-sticky-cta__whatsapp {
+  .mobile-sticky-cta .btn {
     animation: none;
   }
 }
