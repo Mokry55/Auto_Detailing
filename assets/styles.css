@@ -179,6 +179,14 @@ p {
   border-radius: 8px;
 }
 
+.btn:focus-visible,
+.line-btn:focus-visible,
+.text-link:focus-visible,
+.chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .btn-small {
   display: none;
   font-size: 0.9rem;
@@ -419,22 +427,51 @@ p {
 }
 
 .pricing-list {
-  list-style: none;
   margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--border);
+  display: grid;
+  gap: 1rem;
 }
 
-.pricing-list li {
+.pricing-card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--section);
+  padding: 1.2rem;
   display: grid;
-  gap: 0.8rem;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
-  padding: 1rem 0;
+  gap: 0.9rem;
+}
+
+.pricing-card h3 {
+  margin: 0;
+}
+
+.pricing-card--featured {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: 0 0 1rem color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.pricing-badge {
+  justify-self: start;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid color-mix(in srgb, var(--accent) 60%, transparent);
+  border-radius: 999px;
+  padding: 0.18rem 0.65rem;
+  color: var(--accent);
+}
+
+.pricing-points {
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--muted);
+  display: grid;
+  gap: 0.45rem;
 }
 
 .price-meta,
-.pricing-list p {
+.pricing-card p {
   color: var(--muted);
 }
 
@@ -626,8 +663,8 @@ select:focus {
     align-items: center;
   }
 
-  .pricing-list li {
-    grid-template-columns: 1fr auto auto;
+  .pricing-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .contact-grid {
@@ -750,10 +787,13 @@ select:focus {
 .ba-before {
   position: absolute;
   inset: 0 auto 0 0;
+  width: 50%;
   overflow: hidden;
 }
 
 .ba-image--before {
+  width: var(--ba-width, 100%);
+  max-width: none;
   filter: grayscale(0.75) brightness(0.72);
 }
 

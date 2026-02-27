@@ -134,11 +134,16 @@ if (form && formStatus) {
 }
 
 document.querySelectorAll('[data-ba]').forEach((block) => {
-  const range = block.parentElement?.querySelector('[data-ba-range]');
+  const card = block.closest('.ba-card');
+  const range = card?.querySelector('[data-ba-range]');
   const beforeLayer = block.querySelector('.ba-before');
   const divider = block.querySelector('.ba-divider');
 
   if (!(range instanceof HTMLInputElement) || !beforeLayer || !divider) return;
+
+  const syncWidth = () => {
+    block.style.setProperty('--ba-width', `${block.clientWidth}px`);
+  };
 
   const setSplit = (value) => {
     const split = `${value}%`;
@@ -146,6 +151,8 @@ document.querySelectorAll('[data-ba]').forEach((block) => {
     divider.style.left = split;
   };
 
+  syncWidth();
   setSplit(range.value);
   range.addEventListener('input', () => setSplit(range.value));
+  window.addEventListener('resize', syncWidth);
 });
