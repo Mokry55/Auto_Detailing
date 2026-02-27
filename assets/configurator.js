@@ -1,17 +1,17 @@
-const quizForm = document.getElementById('quiz-form');
-const quizStatus = document.getElementById('quiz-status');
-const quizResult = document.getElementById('quiz-result');
+const configForm = document.getElementById('config-form');
+const configStatus = document.getElementById('config-status');
+const configResult = document.getElementById('config-result');
 
-if (quizForm && quizStatus && quizResult) {
-  quizForm.addEventListener('submit', (event) => {
+if (configForm && configStatus && configResult) {
+  configForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    const data = new FormData(quizForm);
+    const data = new FormData(configForm);
     const requiredKeys = ['paint', 'priority', 'usage', 'time', 'budget'];
     const missing = requiredKeys.find((key) => !data.get(key));
 
     if (missing) {
-      quizStatus.textContent = 'Odpowiedz na wszystkie pytania.';
-      quizStatus.className = 'form-status error';
+      configStatus.textContent = 'Odpowiedz na wszystkie pytania.';
+      configStatus.className = 'form-status error';
       return;
     }
 
@@ -41,9 +41,9 @@ if (quizForm && quizStatus && quizResult) {
       details = 'Lekka ochrona dla auta codziennego z naciskiem na łatwą pielęgnację.';
     }
 
-    quizResult.hidden = false;
-    quizResult.innerHTML = `<h2>Twoja rekomendacja: ${recommendation}</h2><p>${details}</p><a class="btn" href="${href}">Przejdź do kontaktu</a>`;
-    quizStatus.textContent = 'Gotowe!';
-    quizStatus.className = 'form-status ok';
+    configResult.hidden = false;
+    configResult.innerHTML = `<h2>Twoja rekomendacja: ${recommendation}</h2><p>${details}</p><a class="btn" href="${href}">Przejdź do kontaktu</a>`;
+    configStatus.textContent = 'Gotowe!';
+    configStatus.className = 'form-status ok';
   });
 }
